@@ -146,4 +146,19 @@ public class News {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "News{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", author='" + author + '\'' +
+                ", image='" + image + '\'' +
+                ", language='" + language + '\'' +
+                ", category=" + category +
+                ", published='" + published + '\'' +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }
