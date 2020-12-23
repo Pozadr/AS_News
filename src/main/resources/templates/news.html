@@ -30,17 +30,18 @@
                     <img class="rounded mx-auto d-block" th:src="${news.getImageUrl()}" alt="No image" width="60%">
                 </td>
             </tr>
+            <!-- url under img
             <tr>
                 <td th:text="${news.getImageUrl()}"></td>
             </tr>
+            -->
             <tr>
                 <td th:text="${news.getDescription()}"></td>
             </tr>
             <tr>
                 <td>
-                    <a class="btn btn-warning editButton"
-                       id="toggleEditModal">Edit</a>
-                    <!-- th:href="@{/get-car-by-id/(id=${car.getId()})}"  -->
+                    <a class="btn btn-warning editButton" id="toggleEditModal"
+                       th:href="@{/get-one-news/(id=${news.getId()})}">Edit</a>
                 </td>
             </tr>
         </table>
@@ -48,153 +49,14 @@
 
 </div>
 
-
-<!-- MODAL: Filter by color
-<div class="modal fade" id="filterByColorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <form th:action="@{/get-car-by-color}" th:method="get">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="filterByColorModalCenterTitle">Filter by color</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="colorAdd" class="col-form-label">Color:</label>
-                        <select class="form-control" id="colorFilterByColor" name="color">
-                            <option value="RED">Red</option>
-                            <option value="GREEN">Green</option>
-                            <option value="BLUE">Blue</option>
-                            <option value="WHITE">White</option>
-                            <option value="BLACK">Black</option>
-                            <option value="YELLOW">Yellow</option>
-                            <option value="ORANGE">Orange</option>
-                            <option value="BROWN">Brown</option>
-                            <option value="GREY">Grey</option>
-                            <option value="UNKNOWN">Unknown</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="submitFilterByColor">Filter</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
--->
-<!-- MODAL: Filter by date
-<div class="modal fade" id="filterByDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <form th:action="@{/get-car-by-date}" th:method="get">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="filterByDateCenterTitle">Filter by date</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="fromDateFilterByDate" class="col-form-label">Production date</label>
-                        <input type="text" class="form-control" id="fromDateFilterByDate" placeholder="yyyy-MM-dd"
-                               name="from">
-                        <p id="fromDateFilterByDateMessage" style="color: red;">
-                            **Production date is missing
-                        </p>
-                    </div>
-                    <div class="form-group">
-                        <label for="toDateFilterByDate" class="col-form-label">Production date</label>
-                        <input type="text" class="form-control" id="toDateFilterByDate" placeholder="yyyy-MM-dd"
-                               name="to">
-                        <p id="toDateFilterByDateMessage" style="color: red;">
-                            **Production date is missing
-                        </p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="submitFilterByDate">Filter</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
--->
-<!-- MODAL: Add Car
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <form th:action="@{/add-car}" th:method="post">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalCenterTitle">Add car</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="markAddCar" class="col-form-label">Mark</label>
-                        <input type="text" class="form-control" id="markAddCar" placeholder="Mark" name="mark">
-                        <p id="markAddMessage" style="color: red;">
-                            **Mark is missing
-                        </p>
-                    </div>
-                    <div class="form-group">
-                        <label for="modelAddCar" class="col-form-label">Model</label>
-                        <input type="text" class="form-control" id="modelAddCar" placeholder="Model"
-                               name="model">
-                        <p id="modelAddMessage" style="color: red;">
-                            **Model is missing
-                        </p>
-                    </div>
-                    <div class="form-group">
-                        <label for="colorAdd" class="col-form-label">Color:</label>
-                        <select class="form-control" id="colorAdd" name="color">
-                            <option value="RED">Red</option>
-                            <option value="GREEN">Green</option>
-                            <option value="BLUE">Blue</option>
-                            <option value="WHITE">White</option>
-                            <option value="BLACK">Black</option>
-                            <option value="YELLOW">Yellow</option>
-                            <option value="ORANGE">Orange</option>
-                            <option value="BROWN">Brown</option>
-                            <option value="GREY">Grey</option>
-                            <option value="UNKNOWN">Unknown</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="dateAddCar" class="col-form-label">Production date</label>
-                        <input type="text" class="form-control" id="dateAddCar" placeholder="yyyy-MM-dd"
-                               name="productionDate">
-                        <p id="dateAddMessage" style="color: red;">
-                            **Production date is missing
-                        </p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="submitAdd">Add new car</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
--->
-<!-- MODAL: Edit Car
+<!-- MODAL: Edit News -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
-    <form th:action="@{/modify-car}" th:method="put">
+    <form th:action="@{/update-news}" th:method="put">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalCenterTitle">Modify car</h5>
+                    <h5 class="modal-title" id="updateModalCenterTitle">Update news</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -203,45 +65,26 @@
                     <div class="form-group">
                         <label for="idEdit" class="col-form-label">Id:</label>
                         <input type="text" class="form-control" id="idEdit" name="id" readonly>
-                        <p id="idEditMessage" style="color: red;">
-                            **Id is missing
+                    </div>
+                    <div class="form-group">
+                        <label for="titleEdit" class="col-form-label">Title:</label>
+                        <input type="text" class="form-control" id="titleEdit" name="title">
+                        <p id="titleEditMessage" style="color: red;">
+                            **Title is missing
                         </p>
                     </div>
                     <div class="form-group">
-                        <label for="markEdit" class="col-form-label">Mark:</label>
-                        <input type="text" class="form-control" id="markEdit" name="mark">
-                        <p id="markEditMessage" style="color: red;">
-                            **Mark is missing
+                        <label for="imageUrlEdit" class="col-form-label">Url:</label>
+                        <input type="text" class="form-control" id="imageUrlEdit" name="imageUrl">
+                        <p id="imageUrlEditMessage" style="color: red;">
+                            **Image url is missing
                         </p>
                     </div>
                     <div class="form-group">
-                        <label for="modelEdit" class="col-form-label">Model:</label>
-                        <input type="text" class="form-control" id="modelEdit" name="model">
-                        <p id="modelEditMessage" style="color: red;">
-                            **Model is missing
-                        </p>
-                    </div>
-                    <div class="form-group">
-                        <label for="colorEdit" class="col-form-label">Color:</label>
-                        <select class="form-control" id="colorEdit" name="color">
-                            <option value="RED">Red</option>
-                            <option value="GREEN">Green</option>
-                            <option value="BLUE">Blue</option>
-                            <option value="WHITE">White</option>
-                            <option value="BLACK">Black</option>
-                            <option value="YELLOW">Yellow</option>
-                            <option value="ORANGE">Orange</option>
-                            <option value="BROWN">Brown</option>
-                            <option value="GREY">Grey</option>
-                            <option value="UNKNOWN">Unknown</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="dateEdit" class="col-form-label">Production date</label>
-                        <input type="text" class="form-control" id="dateEdit" placeholder="yyyy-MM-dd"
-                               name="productionDate">
-                        <p id="dateEditMessage" style="color: red;">
-                            **Production date is missing
+                        <label for="descriptionEdit" class="col-form-label">Description:</label>
+                        <input type="text" class="form-control" id="descriptionEdit" name="description">
+                        <p id="descriptionEditMessage" style="color: red;">
+                            **Description is missing
                         </p>
                     </div>
                 </div>
@@ -253,31 +96,7 @@
         </div>
     </form>
 </div>
--->
-<!-- MODAL: Delete Car
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <form form th:action="@{/delete-car}" th:method="put">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Confirm delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete selected record?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a href="" type="button" class="btn btn-danger" id="idDelete"> Yes delete</a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
--->
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>

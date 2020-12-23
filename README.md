@@ -8,7 +8,8 @@ User can display all and edit each of them.
 ## Endpoints
     http://localhost:8080/news
     http://localhost:8080/get-one-news
-    http://localhost:8080/edit-news
+    http://localhost:8080/update-news
+
 ## Configuration
 
 application.properties file:
@@ -35,3 +36,7 @@ application.properties file:
 - Data Access Object (DAO)
 
 ## Screenshots
+
+![home](./prtScr/1.png "Home")
+![update](./prtScr/2.png "Update news")
+![validation](./prtScr/3.png "Validation")
