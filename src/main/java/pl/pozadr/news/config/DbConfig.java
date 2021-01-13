@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.JdbcTemplate;
 import pl.pozadr.news.api.NewsApi;
+import pl.pozadr.news.model.Info;
 
 import javax.sql.DataSource;
+import java.util.Optional;
 
 @Configuration
 public class DbConfig {
@@ -39,8 +41,10 @@ public class DbConfig {
 
         String sql = "INSERT INTO news (title, image_url, description) VALUES (?,?,?)";
 
-        newsApi.getDataFromRemoteApi().forEach(news ->
-                getJdbcTemplate().update(sql, news.getTitle(), news.getImage(), news.getDescription()));
+        Optional<Info> infoOptional = newsApi.getDataFromRemoteApi();
+        infoOptional.ifPresent(info -> info.getNews()
+                .forEach(news -> getJdbcTemplate().update(sql, news.getTitle(), news.getImage(),
+                        news.getDescription())));
     }
 
 }
