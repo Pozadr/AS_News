@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Repository
 public class NewsDaoImpl implements NewsDao {
+    private static final String DEFAULT_LOCAL_IMG_URL = "/images/newsDefault.jpg";
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -33,7 +34,7 @@ public class NewsDaoImpl implements NewsDao {
         )));
         for (NewsDto news : newsList) {
             if (news.getImageUrl().equals("None")) {
-                news.setImageUrl("https://joemiller.us/wp-content/uploads/news-636978_960_720-1.jpg");
+                news.setImageUrl(DEFAULT_LOCAL_IMG_URL);
             }
         }
         return newsList;
