@@ -32,11 +32,11 @@ public class NewsDaoImpl implements NewsDao {
                 String.valueOf(element.get("image_url")),
                 String.valueOf(element.get("description"))
         )));
-        for (NewsDto news : newsList) {
-            if (news.getImageUrl().equals("None")) {
-                news.setImageUrl(DEFAULT_LOCAL_IMG_URL);
-            }
-        }
+        newsList.forEach(news -> {
+                    if (news.getImageUrl().equals("None")) {
+                        news.setImageUrl(DEFAULT_LOCAL_IMG_URL);
+                    }
+                });
         return newsList;
     }
 
